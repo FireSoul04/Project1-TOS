@@ -4,13 +4,20 @@
 #include <EnableInterrupt.h>
 
 #include "config.h"
+    
+#define BOUNCING_TIME 500
 
-constexpr int buttons[N_BUTTONS] = { B1, B2, B3, B4 };
+int buttons[N_BUTTONS] = { BUTTON1, BUTTON2, BUTTON3, BUTTON4 };
 
 long lastButtonPressTimes[N_BUTTONS] = { 0, 0, 0, 0 };
 bool buttonPressed[N_BUTTONS] = { false, false, false, false };
 
-void (*debouncingHandlers[N_BUTTONS])() = { debouncingHandler0, debouncingHandler1, debouncingHandler2, debouncingHandler3 };
+void debouncingHandler1() { debouncingHandler(B1_INDEX); }
+void debouncingHandler2() { debouncingHandler(B2_INDEX); }
+void debouncingHandler3() { debouncingHandler(B3_INDEX); }
+void debouncingHandler4() { debouncingHandler(B4_INDEX); }
+
+void (*debouncingHandlers[N_BUTTONS])() = { debouncingHandler1, debouncingHandler2, debouncingHandler3, debouncingHandler4 };
 
 void initInput() {
     for (int i = 0; i < N_BUTTONS; i++) {
@@ -19,14 +26,26 @@ void initInput() {
 }
 
 void setupInputInterrupt(bool *buttonEnabled) {
-    for (int i = 0; i < N_BUTTONS; i++) {
-        disableInterrupt(buttons[i]);
-    }
-
+    clearInterrupts();
     for (int i = 0; i < N_BUTTONS; i++) {
         if (buttonEnabled[i]) {
             enableInterrupt(buttons[i], debouncingHandlers[i], CHANGE);
         }
+    }
+}
+
+void clearInterrupts() {
+    for (int i = 0; i < N_BUTTONS; i++) {
+        disableInterrupt(buttons[i]);
+    }
+    clearButtonStates();
+}
+
+void clearButtonStates() {
+    long ts = millis();
+    for (int i = 0; i < N_BUTTONS; i++) {
+        buttonPressed[i] = false;
+        lastButtonPressTimes[i] = ts;
     }
 }
 
@@ -42,5 +61,11 @@ void debouncingHandler(int i) {
 }
 
 bool isButtonPressed(int buttonIndex) {
-    return buttonPressed[buttonIndex];
+    bool pressed = buttonPressed[buttonIndex];
+    if (pressed) {
+        long ts = millis();
+        buttonPressed[buttonIndex] = false;
+        lastButtonPressTimes[buttonIndex] = ts;
+    }
+    return pressed;
 }

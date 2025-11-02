@@ -3,23 +3,28 @@
 
 #define DEBUG
 
-#define B1 2
-#define B2 3
-#define B3 4
-#define B4 5
+#ifdef DEBUG
+#define DEBUG_CALL(x) x
+#else
+#define DEBUG_CALL(x)
+#endif
 
-#define L1 7
-#define L2 8
-#define L3 9
-#define L4 10
+enum Pin {
+    BUTTON1 = 5,
+    BUTTON2 = 4,
+    BUTTON3 = 3,
+    BUTTON4 = 2,
 
-#define LS 11
+    L1 = 10,
+    L2 = 9,
+    L3 = 8,
+    L4 = 7,
 
-#define POT A0
+    LS = 11,
+    POT = A0
+};
 
 #define N_LEDS 5
 #define N_BUTTONS 4
-    
-#define BOUNCING_TIME 50
 
 #endif

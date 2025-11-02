@@ -2,19 +2,20 @@
 
 #include "config.h"
 
-#include "start.h"
 #include "core.h"
-#include "play.h"
 #include "input.h"
+
+#include "start.h"
+#include "play.h"
+#include "termination.h"
 #include "sleep.h"
 
-GameStates state;
+extern GameState state;
 
 void setup() {
     initCore();
     initInput();
     initLCD();
-    initSleepMode();
 }
 
 void loop() {
@@ -33,6 +34,9 @@ void loop() {
 
     case SLEEPING:
         sleep();
+        break;
+
+    default:
         break;
     }
 }

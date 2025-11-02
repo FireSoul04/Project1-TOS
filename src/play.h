@@ -1,15 +1,13 @@
 #ifndef PLAY_H
 #define PLAY_H
 
-enum Difficulty {
-    EASY,
-    MEDIUM,
-    HARD,
-    IMPOSSIBLE,
-
-    N_DIFFICULTIES
-};
-
 void play();
+
+void setupGame();
+void setupGameRound();
+void gameRound();
+void gameOver();
+void roundWon();
+void shuffle(int *array, int length);
 
 #endif
