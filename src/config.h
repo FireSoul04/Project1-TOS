@@ -3,22 +3,22 @@
 
 #define DEBUG
 
-#ifdef DEBUG
-#define DEBUG_CALL(x) x
-#else
-#define DEBUG_CALL(x)
-#endif
+# ifdef DEBUG
+#  define DEBUG_CALL(x) x
+# else
+#  define DEBUG_CALL(x)
+# endif
 
 enum Pin {
-    BUTTON1 = 5,
+    BUTTON1 = 3,
     BUTTON2 = 4,
-    BUTTON3 = 3,
-    BUTTON4 = 2,
+    BUTTON3 = 5,
+    BUTTON4 = 6,
 
-    L1 = 10,
-    L2 = 9,
-    L3 = 8,
-    L4 = 7,
+    L1 = 7,
+    L2 = 8,
+    L3 = 9,
+    L4 = 10,
 
     LS = 11,
     POT = A0

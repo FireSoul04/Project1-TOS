@@ -74,10 +74,10 @@ Difficulty setDifficulty() {
     if (diff != oldDifficulty) {
         oldDifficulty = diff;
         entranceStateTime = millis(); // This prevents the game to go to sleep while the player is choosing the difficulty
-        DEBUG_CALL(lcd.clear());
-        DEBUG_CALL(lcd.setCursor(0, 0));
-        DEBUG_CALL(lcd.print("Difficulty: "));
-        DEBUG_CALL(lcd.print(diff + 1));
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Difficulty: ");
+        lcd.print(diff + 1);
     }
     return diff;
 }
