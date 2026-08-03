@@ -7,7 +7,6 @@
 #include "config.h"
 #include "core.h"
 #include "input.h"
-#include "start.h"
 
 #define WAIT_FOR_GAME_START 2 // Seconds
 #define WAIT_FOR_NEW_ROUND 2 // Seconds
@@ -24,7 +23,6 @@ extern long entranceStateTime;
 
 extern Difficulty difficulty;
 
-bool newRound;
 int currentRound;
 int score;
 
@@ -41,24 +39,20 @@ void play() {
     if (isJustEnteredInState()) {
         setupGame();
     }
-    if (newRound) {
-        setupGameRound();
-    }
     gameRound();
 }
 
 void setupGame() {
-    newRound = true;
     currentRound = 1;
     score = 0;
     timeout = FIRST_ROUND_TIME_OUT * ONE_SEC_MILLIS;
     lcd.setCursor(6, 0);
     lcd.print("Go!");
     delay(WAIT_FOR_GAME_START * ONE_SEC_MILLIS);
+    setupGameRound();
 }
 
 void setupGameRound() {
-    newRound = false;
     if (currentRound > 1) {
         timeout -= getTimeFactor(difficulty, currentRound);
     }
