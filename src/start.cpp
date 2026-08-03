@@ -81,7 +81,3 @@ Difficulty setDifficulty() {
     }
     return diff;
 }
-
-void startGame() {
-    state = PLAYING;
-}
