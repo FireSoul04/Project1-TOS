@@ -9,8 +9,8 @@
 
 int buttons[N_BUTTONS] = { BUTTON1, BUTTON2, BUTTON3, BUTTON4 };
 
-long lastButtonPressTimes[N_BUTTONS] = { 0, 0, 0, 0 };
-bool buttonPressed[N_BUTTONS] = { false, false, false, false };
+volatile long lastButtonPressTimes[N_BUTTONS] = { 0, 0, 0, 0 };
+volatile bool buttonPressed[N_BUTTONS] = { false, false, false, false };
 
 void debouncingHandler1() { debouncingHandler(B1_INDEX); }
 void debouncingHandler2() { debouncingHandler(B2_INDEX); }

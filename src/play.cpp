@@ -96,7 +96,7 @@ void gameRound() {
             }
         }
     }
-    if (buttonsPressed == 4) {
+    if (buttonsPressed == N_BUTTONS) {
         roundWon();
     }
 }

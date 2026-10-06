@@ -3,11 +3,11 @@
 
 #define DEBUG
 
-# ifdef DEBUG
-#  define DEBUG_CALL(x) x
-# else
-#  define DEBUG_CALL(x)
-# endif
+#ifdef DEBUG
+#define DEBUG_CALL(x) x
+#else
+#define DEBUG_CALL(x)
+#endif
 
 enum Pin {
     BUTTON1 = 3,
@@ -26,5 +26,6 @@ enum Pin {
 
 #define N_LEDS 5
 #define N_BUTTONS 4
+#define RANDOM_PIN 1 // pin seriale per ricavare il seed
 
 #endif

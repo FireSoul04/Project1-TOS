@@ -13,14 +13,14 @@ GameState state = STARTING;
 long entranceStateTime = 0;
 bool justEnteredInState = true;
 
-LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 16, 2);
+LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
 
 void initCore() {
     DEBUG_CALL(Serial.begin(9600));
     for (int i = 0; i < N_LEDS; i++) {
         pinMode(leds[i], OUTPUT);
     }
-    randomSeed(analogRead(1));
+    randomSeed(analogRead(RANDOM_PIN));
 }
 
 void initLCD() {
