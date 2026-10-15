@@ -23,7 +23,9 @@ enum Pin {
     LS = 11,
     POT = A0
 };
-
+#define COLUMNS_LCD 20
+#define ROWS_LCD 4
+#define ADDRESS_LCD 0x27
 #define N_LEDS 5
 #define N_BUTTONS 4
 #define RANDOM_PIN 1 // pin seriale per ricavare il seed

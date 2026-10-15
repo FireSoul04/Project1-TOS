@@ -6,14 +6,14 @@
 #include "config.h"
 #include "input.h"
 
-int leds[N_LEDS] = { L1, L2, L3, L4, LS };
+int leds[N_LEDS] = {L1, L2, L3, L4, LS};
 
 GameState state = STARTING;
 
 long entranceStateTime = 0;
 bool justEnteredInState = true;
 
-LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 20, 4);
+LiquidCrystal_I2C lcd = LiquidCrystal_I2C(ADDRESS_LCD, COLUMNS_LCD, ROWS_LCD);
 
 void initCore() {
     DEBUG_CALL(Serial.begin(9600));
@@ -34,9 +34,7 @@ void turnOffAllLeds() {
     }
 }
 
-long getTimeInState() {
-    return millis() - entranceStateTime;
-}
+long getTimeInState() { return millis() - entranceStateTime; }
 
 void changeState(GameState newState) {
     state = newState;
