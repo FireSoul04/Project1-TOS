@@ -1,3 +1,10 @@
+/*
+ * AUTORI:
+ * Martina Malagoli
+ * Davide Mancini
+ * Filippo Ricciotti
+*/
+
 #include <Arduino.h>
 
 #include "config.h"
