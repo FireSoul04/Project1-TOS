@@ -5,7 +5,7 @@
 
 #include "config.h"
     
-#define BOUNCING_TIME 500
+#define BOUNCING_TIME 200
 
 int buttons[N_BUTTONS] = { BUTTON1, BUTTON2, BUTTON3, BUTTON4 };
 

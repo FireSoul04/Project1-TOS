@@ -70,7 +70,7 @@ void pulseLed(int ledPin) {
 }
 
 Difficulty setDifficulty() {
-    Difficulty diff = (Difficulty) map(analogRead(POT), 0, 1023, 0, N_DIFFICULTIES);
+    Difficulty diff = (Difficulty) map(analogRead(POT), 0, 1023, 0, N_DIFFICULTIES - 1);
     if (diff != oldDifficulty) {
         oldDifficulty = diff;
         entranceStateTime = millis(); // This prevents the game to go to sleep while the player is choosing the difficulty
